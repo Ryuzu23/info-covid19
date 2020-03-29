@@ -4,7 +4,7 @@ import json, requests, os
 print ('#############################################')
 print ('#             Author : Ari Ardana           #')
 print ('#              Info COVID-19 V2             #')
-print ('#     https://facebook.com/arie.ganz.96     #')
+print ('#          ariardana192@gmail.com           #')
 print ('#        https://github.com/Ryuzu23         #')
 print ('#############################################\n')
 print ('API Source : https://kawalcorona.com/api\n')
