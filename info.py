@@ -1,27 +1,68 @@
-import json
-import requests
 
-print ('# Corona Virus Information is based on the Python Programming Language')
-print ('# Created by Ari Ardana')
-print ('# Contact Me: https://facebook.com/arie.ganz.96\n')
+import json, requests, os
 
-api = 'https://covid19.mathdro.id/api/countries/'
-last = 'https://covid19.mathdro.id/api'
+print ('#############################################')
+print ('#             Author : Ari Ardana           #')
+print ('#              Info COVID-19 V2             #')
+print ('#     https://facebook.com/arie.ganz.96     #')
+print ('#        https://github.com/Ryuzu23         #')
+print ('#############################################\n')
+print ('API Source : https://kawalcorona.com/api\n')
 
-negara = (input('Cari negara/''Search Country'': '))
+#Jumlah Positif Global
+positif_global = 'https://api.kawalcorona.com/positif'
+respon = requests.get(positif_global).json()
+oi = respon['value']
+print ('Total Positif Global   : ' + str(oi))
 
-url = api + negara
-json_data = requests.get(url).json()
-last_data = requests.get(last).json()
+#Jumlah Sembuh Global
+sembuh_global = 'https://api.kawalcorona.com/sembuh'
+respon = requests.get(sembuh_global).json()
+oi = respon['value']
+print ('Total Sembuh Global    : ' + str(oi))
 
-last_update = last_data['lastUpdate']
-print ('\nLast Update: ' + str(last_update))
+#Jumlah Meninggal Global
+meninggal_global = 'https://api.kawalcorona.com/meninggal'
+respon = requests.get(meninggal_global).json()
+oi = respon['value']
+print ('Total Meninggal Global : ' + str(oi))
 
-confirmed = json_data['confirmed']['value']
-print ('\nTerkonfirmasi/Confirmated: ' + str(confirmed))
+def tampil(data,Provinsi=False,world=False):
+	if Provinsi:
+		print ('[*] Provinsi : ' + data["attributes"]["Provinsi"])
+		print ('[*] Positif : ' + str(data["attributes"]["Kasus_Posi"]))
+		print ('[*] Sembuh : ' + str(data["attributes"]["Kasus_Semb"]))
+		print ('[*] Meninggal : ' + str(data["attributes"]["Kasus_Meni"]))
+		print ('-'*30)
+	if world:
+		print ('[*] Negara : ' + data['attributes']['Country_Region'])
+		print ('[*] Last Update : ' + str(data['attributes']['Last_Update']))
+		print ('[*] Terkonfirmasi : ' + str(data['attributes']['Confirmed']))
+		print ('[*] Positif : ' + str(data['attributes']['Active']))
+		print ('[*] Sembuh : ' + str(data['attributes']['Recovered']))
+		print ('[*] Meninggal : ' + str(data['attributes']['Deaths']))
+		print ('-'*30)
+#Menu
+print ('\n1. Data COVID-19 di Provinsi Indonesia')
+print ('2. Data COVID-19 Global')
+print ('3. Keluar')
+pilih = input('Pilih Opsi >>> ')
 
-recovered = json_data['recovered']['value']
-print ('Sembuh/Recovered: ' + str(recovered))
 
-death = json_data['deaths']['value']
-print ('Meninggal/Deaths: ' + str(death))
+
+if pilih == '1':
+	prov = 'https://api.kawalcorona.com/indonesia/provinsi/'
+	data = requests.get(prov).json()
+	for x in data:
+		tampil(x,Provinsi=True)
+
+elif pilih == '2':
+	data_global = 'https://api.kawalcorona.com'
+	data = requests.get(data_global).json()
+	for x in data:
+		tampil(x,world=True)
+	
+elif pilih == '3':
+	exit()
+else:
+	exit('Input Salah!')
