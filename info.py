@@ -29,18 +29,18 @@ print ('Total Meninggal Global : ' + str(oi))
 
 def tampil(data,Provinsi=False,world=False):
 	if Provinsi:
-		print ('[*] Provinsi : ' + data["attributes"]["Provinsi"])
-		print ('[*] Positif : ' + str(data["attributes"]["Kasus_Posi"]))
-		print ('[*] Sembuh : ' + str(data["attributes"]["Kasus_Semb"]))
+		print ('[*] Provinsi  : ' + data["attributes"]["Provinsi"])
+		print ('[*] Positif   : ' + str(data["attributes"]["Kasus_Posi"]))
+		print ('[*] Sembuh    : ' + str(data["attributes"]["Kasus_Semb"]))
 		print ('[*] Meninggal : ' + str(data["attributes"]["Kasus_Meni"]))
 		print ('-'*30)
 	if world:
-		print ('[*] Negara : ' + data['attributes']['Country_Region'])
-		print ('[*] Last Update : ' + str(data['attributes']['Last_Update']))
+		print ('[*] Negara        : ' + data['attributes']['Country_Region'])
+		print ('[*] Last Update   : ' + str(data['attributes']['Last_Update']))
 		print ('[*] Terkonfirmasi : ' + str(data['attributes']['Confirmed']))
-		print ('[*] Positif : ' + str(data['attributes']['Active']))
-		print ('[*] Sembuh : ' + str(data['attributes']['Recovered']))
-		print ('[*] Meninggal : ' + str(data['attributes']['Deaths']))
+		print ('[*] Positif       : ' + str(data['attributes']['Active']))
+		print ('[*] Sembuh        : ' + str(data['attributes']['Recovered']))
+		print ('[*] Meninggal     : ' + str(data['attributes']['Deaths']))
 		print ('-'*30)
 #Menu
 print ('\n1. Data COVID-19 di Provinsi Indonesia')
