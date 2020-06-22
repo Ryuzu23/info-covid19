@@ -1,11 +1,10 @@
-
 import json, requests, os
 
 print ('#############################################')
 print ('#             Author : Ari Ardana           #')
 print ('#              Info COVID-19 V2             #')
-print ('#          ariardana192@gmail.com           #')
-print ('#        https://github.com/Ryuzu23         #')
+print ('#            mail@ariardana.my.id           #')
+print ('#        https://github.com/ariiardana      #')
 print ('#############################################\n')
 print ('API Source : https://kawalcorona.com/api\n')
 
@@ -36,9 +35,7 @@ def tampil(data,Provinsi=False,world=False):
 		print ('-'*30)
 	if world:
 		print ('[*] Negara        : ' + data['attributes']['Country_Region'])
-		print ('[*] Last Update   : ' + str(data['attributes']['Last_Update']))
-		print ('[*] Terkonfirmasi : ' + str(data['attributes']['Confirmed']))
-		print ('[*] Positif       : ' + str(data['attributes']['Active']))
+		print ('[*] Positif       : ' + str(data['attributes']['Confirmed']))
 		print ('[*] Sembuh        : ' + str(data['attributes']['Recovered']))
 		print ('[*] Meninggal     : ' + str(data['attributes']['Deaths']))
 		print ('-'*30)
